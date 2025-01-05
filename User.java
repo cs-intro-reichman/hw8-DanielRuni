@@ -22,7 +22,7 @@
         this(name);
         follows[0] = "Foo";
         follows[1] = "Bar";
-        follows[2] = "Baz";
+        follows[2] = "baz";
         fCount = 3;
     }
 
