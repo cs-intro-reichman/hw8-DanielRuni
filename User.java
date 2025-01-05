@@ -20,7 +20,7 @@
      *  to allow testing the toString and follows methods, before implementing other methods. */
     public User(String name, boolean gettingStarted) {
         this(name);
-        follows[0] = "Foo";
+        follows[0] = "foo";
         follows[1] = "Bar";
         follows[2] = "baz";
         fCount = 3;
