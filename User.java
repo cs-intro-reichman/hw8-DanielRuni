@@ -20,9 +20,9 @@
      *  to allow testing the toString and follows methods, before implementing other methods. */
     public User(String name, boolean gettingStarted) {
         this(name);
-        follows[0] = "foo";
+        follows[0] = "Foo";
         follows[1] = "Bar";
-        follows[2] = "baz";
+        follows[2] = "Baz";
         fCount = 3;
     }
 
@@ -53,10 +53,10 @@
     /** Makes this user follow the given name. If successful, returns true. 
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
-        if (this.follows(name) || this.fCount == 10) {
+        if (this.follows(name.toLowerCase()) || this.fCount == 10) {
             return false;
         }
-        this.follows[this.fCount] = name;
+        this.follows[this.fCount] = name.toLowerCase();
         this.fCount ++ ;
         return true;
     }
@@ -64,11 +64,11 @@
     /** Removes the given name from the follows list of this user. If successful, returns true.
      *  If the name is not in the list, does nothing and returns false. */
     public boolean removeFollowee(String name) {
-        if (this.fCount == 0 || !this.follows(name)) {
+        if (this.fCount == 0 || !this.follows(name.toLowerCase())) {
             return false;
         }
         int i=0;
-        while (!this.follows[i].equals(name)) {
+        while (!this.follows[i].equals(name.toLowerCase())) {
             i++;
         }
         for (int j=i; j<this.fCount-1; j++) {
