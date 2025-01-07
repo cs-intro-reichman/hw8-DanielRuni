@@ -84,6 +84,9 @@ public class Network {
     /** Computes and returns the name of the most popular user in this network: 
      *  The user who appears the most in the follow lists of all the users. */
     public String mostPopularUser() {
+        if (this.userCount == 0) {
+            return null;
+        }
         int appearances = 0;
         User mostPopular = null;
         for (int i=0; i<this.userCount; i++) {
@@ -109,6 +112,9 @@ public class Network {
 
     // Returns a textual description of all the users in this network, and who they follow.
     public String toString() {
+        if (this.userCount == 0) {
+            return "Network:\n";
+        }
         String str = "Network:\n";
         for (int i=0; i<this.userCount-1; i++) {
             str += this.users[i].toString() + "\n";   
