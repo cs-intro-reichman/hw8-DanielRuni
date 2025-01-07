@@ -29,6 +29,9 @@ public class Network {
      *  If there is no such user, returns null.
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
+        if (name == null) {
+            return null;
+        }
         for (int i=0; i<this.userCount; i++) {
             if (this.users[i].getName().toLowerCase().equals(name.toLowerCase())) {
                 return this.users[i];
@@ -57,7 +60,7 @@ public class Network {
         if (getUser(name1) == null || getUser(name2) == null) {
             return false;
         }
-        return this.getUser(name1).addFollowee(name2);
+        return getUser(name1).addFollowee(name2);
     }
     
     /** For the user with the given name, recommends another user to follow. The recommended user is
@@ -70,7 +73,7 @@ public class Network {
             return null; 
         }
         for (int i=0; i<userCount; i++) {
-            if (given.countMutual(this.users[i]) > maxMutual) {
+            if (given.countMutual(this.users[i]) > maxMutual && given.getName() != users[i].getName()) {
                 recommendedUser = this.users[i].getName();
                 maxMutual = given.countMutual(this.users[i]);
             }
@@ -108,8 +111,8 @@ public class Network {
     public String toString() {
         String str = "";
         for (int i=0; i<this.userCount; i++) {
-            str += this.users[i].toString();   
+            str += this.users[i].toString() + "\n";   
         }
-        return null;
+        return str;
     }
 }
